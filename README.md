@@ -1,1 +1,1 @@
-# Mis_Perris
+# Aplicación web CRUD en Django
