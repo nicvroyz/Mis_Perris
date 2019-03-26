@@ -1,0 +1,4 @@
+<option selected disabled>Selecciona una ciudad</option>
+{% for ciudad in ciudades %}
+<option value="{{ ciudad.numero_ciudad}}"> {{ciudad.descripcion}}</option>
+{% endfor %}

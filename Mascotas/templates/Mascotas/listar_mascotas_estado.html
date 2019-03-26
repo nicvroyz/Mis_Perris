@@ -1,0 +1,10 @@
+{% for mascota in mascotas %}
+<tr>
+    <td>{{mascota.nombre}}</td>
+    <td>{{mascota.raza}}</td>
+    <td>{{mascota.estado}}</td>
+    <td><img class="img-thumbnail" src="{{mascota.fotografia.url}}" alt="Imagen de perrito {{mascota.nombre}}"></td>
+    <td><a href="{% url 'Mascotas:editar_mascota' id_mascota=mascota.id %}" class="btn btn-warning">Editar</a></td>
+    <td><a href="{% url 'Mascotas:borrar_mascota' id_mascota=mascota.id %}" class="btn btn-danger">Borrar</a></td>
+</tr>
+{% endfor %}

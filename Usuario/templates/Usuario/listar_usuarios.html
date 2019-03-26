@@ -1,0 +1,36 @@
+{% include 'PaginaPrincipal/base.html' %}
+  {% block content %}
+  {% load static %}
+  <style>
+    .container{
+      margin-top: 100px !important; 
+    }
+
+    h1{
+      margin-bottom: 5%;
+    }
+  </style>
+    <div class="container">
+      <h1 class="text-center">Usuarios registrados</h1>
+        <table class="table">
+            <thead>
+              <tr>                
+                <th scope="col">Rut</th>
+                <th scope="col">Nombre Completo</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Telefono</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for usuario in usuarios %}
+              <tr>                
+                <td>{{usuario.rut}}</td>
+                <td>{{usuario.nombre_completo}}</td>
+                <td>{{usuario.correo_electronico}}</td>
+                <td>{{usuario.telefono}}</td>
+              </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>    
+{% endblock %}

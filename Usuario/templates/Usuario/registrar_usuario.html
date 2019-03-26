@@ -1,0 +1,140 @@
+{% include 'PaginaPrincipal/base.html' %}
+{% load socialaccount %} 
+{% block content %}
+{% load static %}
+<style>
+  #formulario{
+    margin-top: 100px;    
+  }
+  h1{
+    margin-bottom: 5%;
+  }
+</style>
+<div class="container">
+  <div id="formulario">
+    <h1 class="text-center">Registro de Adopción</h1>
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post" action="{% url 'Usuario:registrar_usuario' %}">
+      {% csrf_token %}
+
+      <div id="nombre" class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input class="form-control" name="nombre_completo" type="text" placeholder="Ingresa tu nombre completo"
+          minlength="3" maxlength="30" pattern="^[a-zA-Z ]+$" required>
+      </div>
+
+      <div id="rut" class="form-group">
+        <label for="rut">Rut</label>
+        <input class="form-control" id="rut" name="rut" type="text" placeholder="12345678-k" minlength="9" maxlength="10"
+          pattern="^[0-9Kk-]+$" title="sin puntos con guión" onblur="ValidarRut(this)" required>
+      </div>
+
+      <div id="correo" class="form-group">
+        <label for="correo_electronico">Correo electrónico</label>
+        <input class="form-control" name="correo_electronico" type="email" placeholder="ejemplo@gmail.com" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" class="form-control" name="password" type="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password_verification">Verificación Password</label>
+        <input id="password_verification" class="form-control" name="password_verification" type="password" required
+        onchange="VerificarPassword()">
+      </div>
+
+      <div id="alert_message" class="alert alert-danger" role="alert" hidden>
+          <strong>Atención</strong> los campos Password y Verificación de Password no coinciden
+        </div> 
+
+      <div id="fecha" class="form-group">
+        <label for="fecha_nacimiento">Fecha Nacimiento</label>
+        <input class="form-control" name="fecha_nacimiento" type="date" format="dd/mm/yyyy" required>
+      </div>
+
+      <div id="telefono" class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input class="form-control" name="telefono" type="number" placeholder="Ingresa tu número" minlength="8"
+          maxlength="9" pattern="^[0-9]+$" required>
+      </div>
+
+      <div id="region" class="form-group">
+        <label for="region">Región</label>
+        <select class="form-control" id="select_region" name="region" required>
+          <option selected disabled>Selecciona una región</option>
+          {% for region in regiones %}
+          <option value="{{region.numero_region}}">{{region}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div id="ciudad" class="form-group">
+        <label for="ciudad">Ciudad</label>
+        <select class="form-control" id="select_ciudad" name="ciudad" required disabled>
+          <option selected disabled>Selecciona una ciudad</option>
+          {% for ciudad in ciudades %}
+          <option value="">{{ciudad}}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div id="tipo_vivienda" class="form-group">
+        <label for="tipo_vivienda">Tipo de Vivienda</label>
+        <select class="form-control" name="tipo_vivienda" required>
+          <option selected disabled>Selecciona una opción</option>
+          {% for tipo_vivienda in tipos_viviendas %}
+          <option value="{{tipo_vivienda.id}}">{{tipo_vivienda.descripcion}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <input class="btn btn-success" id="registrar" type="submit" value="Registrar">
+      <a class="btn btn-primary " style="margin-top:15px;"href="{% provider_login_url 'facebook' method='oauth2' %}">
+        <span class="fab fa-facebook"></span>
+        Continuar con Facebook
+    </a>
+      </form>
+  </div>
+  <script src="{% static 'Usuario/js/form.js' %}"></script>
+</div>
+{% block javascript%}
+<script>
+  $("#select_region").change(function () {
+    var form = $(this).closest("form");
+    var region_id = $(this).val();
+    $.ajax({
+      url: '{% url "Usuario:cargar_ciudades" %}',
+      data: {
+        'region_id': region_id
+      },
+      success: function (data) {
+        console.log("Llego")
+        $("#select_ciudad").html(data);
+        $("#select_ciudad").attr('disabled', false);
+      }
+    })
+  })
+</script>
+{% endblock %}
+{% endblock %}

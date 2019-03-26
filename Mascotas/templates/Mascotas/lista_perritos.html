@@ -1,0 +1,88 @@
+{% include 'PaginaPrincipal/base.html' %}
+{% block content %}
+{% load static %}
+<style>
+  .container {
+    margin-top: 100px !important;
+  }
+
+  h1 {
+    margin-bottom: 5%;
+  }
+
+  .img-thumbnail {
+    max-width: 25%;
+  }
+</style>
+<div class="container">
+    {%if message%}    
+    <div id="alert_message" class="alert alert-success" role="alert">
+      {{message}}
+    </div>   
+    <script>
+      // Manejo alert
+      $("#alert_message").fadeOut(3000, 0). slideUp(2000, function(){
+        $(this).remove();
+      })
+    </script> 
+    {% endif %}
+  <h1 class="text-center">Perritos registrados</h1>
+  {% if mascotas %}
+  <form action="POST" novalidate>
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="estado">Seleccione estado</label>
+      <select class="form-control" name="estado" id="estado" style="max-width: 300px">
+        <option value="" selected disabled>Seleccione estado</option>
+        <option value="-1">Todos</option>
+        {% for estado in estados %}
+        <option value="{{estado.id}}">{{estado.descripcion}}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Foto</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Borrar</th>
+      </tr>
+    </thead>
+    <tbody id="mascotas_tbody">
+      {% for mascota in mascotas %}
+      <tr>
+        <td>{{mascota.nombre}}</td>
+        <td>{{mascota.raza}}</td>
+        <td>{{mascota.estado}}</td>
+        <td><img class="img-thumbnail" src="{{mascota.fotografia.url}}" alt="Imagen de perrito {{mascota.nombre}}"></td>
+        <td><a href="{% url 'Mascotas:editar_mascota' id_mascota=mascota.id %}" class="btn btn-warning">Editar</a></td>
+        <td><a href="{% url 'Mascotas:borrar_mascota' id_mascota=mascota.id %}" class="btn btn-danger">Borrar</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <h2 class="text-center">No hay perritos registrados</h2>
+  {% endif %}
+</div>
+<script>
+  $("#estado").change(function () {
+    var form = $(this).closest("form");
+    var estado_id = $(this).val();
+    $.ajax({
+      url: '{% url "Mascotas:seleccionar_mascota_estado" %}',
+      data: {
+        'estado_id': estado_id
+      },
+      success: function (data) {
+        $("#mascotas_tbody").html('');        
+        $("#mascotas_tbody").html(data);
+      }
+    })
+  })
+</script>
+{% endblock %}

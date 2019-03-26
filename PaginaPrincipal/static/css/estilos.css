@@ -1,0 +1,446 @@
+/* PROPIEDADES DE VENTANA */
+body{
+    margin-top: 20px !important;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;    
+}
+#logo{
+max-width: 200px !important;
+justify-content: flex-end !important;
+
+}
+
+.carousel-caption{
+
+    background-color: black;
+    opacity: 0.4;
+    max-width: 400px;
+    max-height: 100px;
+    margin: 0 auto;
+
+}
+
+#menu{
+    background-color: #33CC99 !important;
+    margin-bottom: 20px !important;
+}
+.dropdown-menu{
+    background-color: #66CC99 !important;
+
+}
+
+#menu a{
+    color: white;
+}
+.dropdown-item:hover{
+    background-color: gray  !important;
+    opacity: 0.2;
+    color: white;
+
+}
+#social{
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    margin-bottom: 20px;
+}
+
+#social a{
+    background: #FFF;
+    margin-right: 10px;
+    margin-top: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    color: #33CC99;
+    opacity: 0.7;    
+}
+
+/* PROPIEDADES ETAPAS */
+
+#etapas{    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+    order: 3;
+    height: auto;
+    margin-bottom: 10px !important;
+} 
+
+#etapas h2, #etapas p{
+    margin-bottom: 0;
+}
+
+#rescate{
+    display: flex;
+    flex-direction: column;    
+    align-items: flex-end;
+    text-align: right;
+    font-size: 13px;  
+    margin-bottom: 20px !important;  
+}
+
+#crowfunding{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    font-size: 13px;   
+    margin-bottom: 20px !important; 
+}
+
+.img-etapas{
+    margin-top: 10px;    
+    max-width: 70%;
+}
+
+.estiloHR{
+    width: 20%;
+    border: 0;
+    height: 3px;
+    background: black;
+    margin: 8px 0;
+}
+
+.btn_blanco{
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 5px;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 20px;
+    max-width: 35%;    
+}
+ /* PROPIEDADES GALERIA */
+#galeria{
+    margin-top: 30px;
+}
+
+ #imagenes-galeria{
+     display: flex;
+     flex-direction: row;
+     flex-wrap: nowrap;
+     justify-content: space-around;
+     max-width: 100%;
+     max-height: 100%;
+   
+ }
+
+ #row{
+     padding: 50px;
+ }
+
+ 
+ 
+
+.foto {
+   
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 8px 0 rgba(0, 0, 0, 0.19);
+    padding:10px;
+
+    
+    
+   
+}
+.{+pkjhvbhjkopoihbvgyu7tcsr54esdzxe34asz<se45} a {
+        max-width: 400px;
+         padding:5px;
+    
+}
+
+h5{
+    color: rgba(255, 47, 0, 0.728);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+    font-weight: lighter;
+}
+
+
+
+footer{
+    margin-top: 30px;
+    background-color:gray;
+    flex-grow: 1;
+    text-align: left;
+    padding: 10px;
+}
+
+footer p {
+    margin-left: 20px;
+    color: white;
+    font-size: 14px;
+    font-family: 'Advent Pro', sans-serif;
+    font-weight: lighter;
+}
+
+.foto h1{
+    font-size: 28px !important;
+}
+
+.container{
+    display: block;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+#formulario form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    margin: 0 auto;
+   
+
+}
+
+#formulario form label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px auto;
+    width: 50vw;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: auto;
+}
+#formulario form input, #formulario form select{
+    display: flex;
+    justify-content:  center;
+    margin: 10px auto;
+    width: 50vh;
+    margin-bottom: 0;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+
+#boton{
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: middle;
+   
+}
+
+#lista{
+    margin-top: 40px !important;
+}
+
+
+#login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 150px !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#login-form form input, #login-form form label{
+    margin: 15px;
+}
+
+#login-form form button{
+    margin: 15px auto;
+    
+}
+
+ h1{
+    font-size: 38px;
+    color: #33CC99;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Indie Flower';
+    font-weight: lighter;
+    padding: 30px;
+
+}
+
+#formulario form {
+    padding: 20px;
+
+}
+
+#formulario form button{
+    margin: 30px;
+}
+
+#formulario{
+
+    margin-top: 90px !important;
+    background-color: white;
+    
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#formulario h1{
+    font-size: 38px;
+    color: #33CC99;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Indie Flower';
+    font-weight: lighter;
+    padding: 30px;
+
+ 
+}
+
+#principal{
+    max-width: 90%;
+}
+
+.PasswordResetForm{
+    margin-top: 90px !important;
+}
+
+
+#reset a{
+    font-size: 14px;
+    right: 0 !important;
+    text-decoration: none !important;
+}
+
+#micuenta{
+    margin-top: 80px !important;
+    
+}
+
+#cardd{
+    border: 1px black solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#mis_mascotas h1{
+    margin-top: 110px !important;
+}
+
+#mis_mascotas table{
+    margin-top: 10px !important;
+    border: 2px black solid;
+    margin-right: 20px !important;
+}
+
+@media screen and (min-width: 768px){
+    #cardd{
+        justify-content: center;
+        margin: 0 auto !important;
+    }
+
+}
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 768px){
+
+   
+
+    #etapas{
+        flex-direction: row;
+        justify-content: space-between;        
+    }
+
+    #rescate{
+        margin-right: 5%;
+    }
+
+    #rescate img{
+        margin-top: 10%;
+    }
+
+    #crowfunding{
+        margin-top: 0;
+    }
+
+    #crowfunding img{
+        max-width: 50%;
+
+    }
+
+    .foto{
+        width: 430px !important;
+        height: 260px !important;
+        justify-content: space-around;
+    }
+
+    .foto h1{
+        font-size: 28px !important;
+    }
+
+}
+
+@media screen and (min-width: 900px){
+  
+
+    #etapas{
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .foto{
+        width: 430px !important;
+        height: 260px !important;
+        justify-content: space-around;
+    }
+
+    .foto h1{
+        font-size: 28px !important;
+    }
+
+   
+}
+
+@media screen and (min-width: 1240px){
+
+    #logo{
+        margin-left: 10%;
+    }
+
+
+    #etapas{
+        max-width: 70%;
+        margin-top: 40px;
+    }
+
+
+    .foto{
+  
+        padding: 10px;
+        justify-content: space-around;
+    }
+
+    .foto h1{
+        font-size: 28px !important;
+    }
+    
+
+}
+
+
+
+@media screen and (max-width: 1440px){
+
+
+    .foto{
+  
+        padding: 10px;
+        justify-content: space-around;
+    }
+
+
+
+}

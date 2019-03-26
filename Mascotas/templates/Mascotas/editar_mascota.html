@@ -1,0 +1,61 @@
+{% extends 'PaginaPrincipal/base.html' %}
+
+{% block content%}
+<style>
+    .container{
+        margin-top: 100px;   
+    }
+</style>
+<div class="container">
+    <h1 class="text-center">Editar Mascota</h1>
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+      <strong>{{ error|escape }}</strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form action="{% url 'Mascotas:editar_mascota' id_mascota=mascota.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre mascota" value="{{mascota.nombre}}">
+        </div>
+        <div class="form-group">
+            <label for="raza">Raza predominante</label>
+            <input class="form-control" type="text" name="raza" id="raza" placeholder="Raza mascota" value="{{mascota.raza}}">
+        </div>
+        <div class="form-group">
+            <label for="estado">Estado</label>
+            <select class="form-control" name="estado" id="estado">
+                <option value="" selected disabled>Seleccione un estado</option>
+                {% for estado in estados %}
+                <option value="{{estado.id}}">{{estado.descripcion}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fotografia">Fotografía</label>
+            <input class="form-control" type="file" name="fotografia" id="fotografia" value="{{mascota.fotografia.url}}">
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripcion mascota" value="{{mascota.descripcion}}">
+        </div>
+        <input class="btn btn-warning" type="submit" value="Editar">
+    </form>    
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'PaginaPrincipal/base.html' %}
+{% block content%}
+<style>
+    .container{
+        margin-top: 100px;   
+    }
+</style>
+<div class="container">
+    <h1 class="text-center">Borrar Mascota</h1>
+    <form action="{% url 'Mascotas:borrar_mascota' id_mascota=mascota.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" name="nombre" id="nombre" placeholder="Nombre mascota" value="{{mascota.nombre}}"
+                disabled>
+        </div>
+        <div class="form-group">
+            <label for="fotografia">Fotografía</label>
+            <img class="img-thumbnail" src="{{mascota.fotografia.url}}" alt="Imagen de perrito {{mascota.nombre}}">
+        </div>
+
+
+        <a class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmacion">Borrar</a>
+
+        <!-- Modal -->
+        <div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionTitulo"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmación adopción</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Confirme si desea borrar a {{mascota.nombre}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <input class="btn btn-danger" type="submit" value="Borrar">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+{% endblock %}

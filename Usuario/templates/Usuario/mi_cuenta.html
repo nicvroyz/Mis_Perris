@@ -1,0 +1,84 @@
+{%include 'PaginaPrincipal/base.html'%}
+
+{%block content%}
+
+{%load static%}
+
+<div class="container">
+    <div class="row">
+        
+
+        <div id="mis_mascotas" class="container col-md-6">
+
+            <h1 class="text-center">Mis mascotas</h1>
+
+            <table class="table table-bordered table-sm ">
+
+                <thead>
+
+                    <tr class="table-success">
+
+                        <th scope="col">Nombre</th>
+
+                        <th scope="col">Raza</th>
+
+                        <th scope="col">Descripcion</th>
+
+
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {%for mascota in mascota%}
+
+
+
+                    <tr>
+
+                        <td>{{mascota.nombre}}</td>
+
+                        <td>{{mascota.raza}}</td>
+
+                        <td>{{mascota.descripcion}}</td>
+
+                    </tr>
+
+                    {%endfor%}
+
+                </tbody>
+
+            </table>
+
+        </div>
+        <div id="micuenta" class="container col-md-6">
+
+                <div id="cardd" class="card" style=" width: 22rem; padding: 25px;">
+    
+                    <h1 class="text-center">Mi cuenta</h1>
+    
+                    <p>Nombre de Usuario (Rut): {{user.username}}</p>
+    
+                    <p>Nombre: {{usuarios.nombre}}</p>
+    
+                    <p>Apellido: {{usuarios.apellido}}</p>
+    
+                    <p>Email: {{usuarios.correo}}</p>
+    
+                    <p>Fecha Nacimiento: {{usuarios.fecha}}</p>
+    
+                    <p>Telefono: {{usuarios.telefono}}</p>
+    
+                    <p>Ciudad: {{usuarios.ciudad}}</p>
+    
+                </div>
+    
+            </div>
+    </div>
+</div>
+
+
+
+{%endblock%}
